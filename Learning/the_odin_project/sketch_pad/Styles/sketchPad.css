@@ -1,3 +1,10 @@
+html {
+	font-family: "arial", san-serif;
+}
+
+h1 {
+	text-align: center;
+}
 
 .container {
 	margin: 1.25em auto;
@@ -11,10 +18,22 @@
 
 .container .grid .square {
 	float: left;
+	height: 60px;
+	width: 60px;
+	/*background-color: red;*/
+}
+
+.container .grid .square.painted {
+	background-color: red;
 }
 
 .button {
-	
+	background-color: #ddd;
+	border-radius: 2px;
+	padding: 5px 10px;
+	color: #000;
+	text-decoration: none;
+	font-weight: bold;
 }
 
 .button.reset {

@@ -10,13 +10,12 @@ $(document).ready(function() {
 	});
 });
 
-
 var randomRGB = function () {
 	var randomColourNumber = function () {
 		return Math.floor((Math.random() * 256) + 1);
-	}
+	};
 	return "rgb(" + randomColourNumber() + ", " + randomColourNumber() + ", " + randomColourNumber() + ")";
-}
+};
 
 var newGrid = function (gridSize) {
 	var gridSquare = "<div class='square'></div>";
@@ -24,8 +23,8 @@ var newGrid = function (gridSize) {
 		for (var j = 0; j < gridSize; j++) {
 			$(".grid").append(gridSquare);
 		}
-	};
-}
+	}
+};
 
 var initNewGrid = function () {
 	$(".controls").on('click', '.newGrid', function(event) {
@@ -35,14 +34,14 @@ var initNewGrid = function () {
 		var gridSize = prompt("Specify grid size", "16");
 		newGrid(gridSize);
 	});
-}
+};
 
 var gridPaint = function () {
 	$(".grid").on('mouseenter', '.square', function() {
 		/* Act on the event */
 		$(this).addClass('painted');
 	});
-}
+};
 
 var gridReset = function() {
 	$(".controls").on('click', '.reset', function(event) {
@@ -51,7 +50,7 @@ var gridReset = function() {
 		$(".painted").removeClass('painted');
 		$(".paintedRandom").removeClass('paintedRandom').removeAttr('style');
 	});
-}
+};
 
 var gridPaintRandom = function () {
 	$(".grid").on('mouseenter', '.square', function() {
@@ -59,7 +58,9 @@ var gridPaintRandom = function () {
 		$(this).addClass('paintedRandom');
 		$(this).css('background-color', randomRGB());
 	});
-}
+};
+
+
 
 
 

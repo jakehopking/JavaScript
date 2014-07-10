@@ -11,7 +11,7 @@ var zeroFilledSieve = function (length){
     zeroArray[i] = 0;
   }
   return zeroArray;
-}
+};
 
 // Creates an array of zeros of number sqrt length
 var arrayLength = numberSqrtCeil;
@@ -29,7 +29,7 @@ var primeNumberSieve = function () {
       }
     }
   }
-}
+};
 primeNumberSieve();
 
 // Outputs array (each 1 corresponds to a prime number in the arrays[position])
@@ -52,7 +52,7 @@ var findLargePrimeFactor = function (num) {
     }
   }
   return largest;
-}
+};
 
 $('p.result').html(findLargePrimeFactor(number));
 

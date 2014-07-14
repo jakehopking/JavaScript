@@ -1,7 +1,7 @@
 $(document).ready(function($) {
 	// console.log(my_max([1,56,2,3,-1,0]));
-	$('.vowelCount').find('em').text(vowel_count(prompt("How many vowels in this text:", " ")));
-	$(".reverseString").find('em').text(string_reverser(prompt("Text to reverse:", "Here...")));
+	// $('.vowelCount').find('em').text(vowel_count(prompt("How many vowels in this text:", " ")));
+	// $(".reverseString").find('em').text(string_reverser(prompt("Text to reverse:", "Here...")));
 });
 
 
@@ -33,3 +33,18 @@ function string_reverser(reverseMe) {
 	}
 	return tempArray.join('');
 };
+
+var Math = {
+	add: function(num1, num2) {
+		return num1 + num2;
+	},
+	subtract: function(num1, num2) {
+		return num1 - num2;
+	},
+	multiply: function(num1, num2) {
+		return num1 * num2;
+	},
+	divide: function(num1, num2) {
+		return num1 / num2;
+	}
+}

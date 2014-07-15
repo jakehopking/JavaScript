@@ -20,6 +20,7 @@ input[type=text] {
 	text-align: right;
 	font-weight: bold;
 	font-size: 15px;
+	font-family: "Lucida Console", Monaco, monospace;
 }
 input[type=text]:focus {
 	outline: 0;

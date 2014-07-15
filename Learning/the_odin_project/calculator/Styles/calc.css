@@ -11,39 +11,54 @@ h1 {
 	width: 960px;
 }
 
-.container .grid {
-	position: relative;
-	width: 100%;
-}
 
-.container .grid .square {
+input[type=text] {
+	width: 149px;
 	float: left;
-	height: 60px;
-	width: 60px;
-	/*background-color: red;*/
+	padding: 5px;
+	height: 20px;
+	text-align: right;
+	font-weight: bold;
+	font-size: 15px;
+}
+input[type=text]:focus {
+	outline: 0;
 }
 
-.container .grid .square.painted {
-	background-color: red;
-}
-
-.button {
-	background-color: #ddd;
-	border-radius: 2px;
-	padding: 5px 10px;
-	color: #000;
+button {
+	width: 40px;
+	height: 40px;
+	margin-right: 1px;
+	margin-bottom: 0px;
+	float: left;
+	color: #fff;
+	border: 0;
+	background-color: #555;
+	/*border-radius: 0px;*/
+	padding: 10px;
 	text-decoration: none;
 	font-weight: bold;
 }
-
-.button.reset {
-
+button:hover {
+	background-color: #444;
+	cursor: pointer;
 }
-
-.button.newGrid {
-
+button:focus {
+	outline: 0;
 }
-
-.gridSquare {
-
+button:active {
+	background-color: #000 !important;
+}
+button.operator {
+	background-color: #007ed6;
+}
+button.operator:hover {
+	background-color: #0068b1;
+}
+.row {
+	clear: left;
+	float: left;
+	margin-bottom: 1px;
+	padding: 0;
+	position: relative;
 }

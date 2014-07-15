@@ -10,6 +10,7 @@ function my_max(input) {
 	return Math.max.apply(null, input);
 };
 
+// Count the number of vowels in a given string (quite inefficient with ||. Will optimise when update to compare against an array)
 function vowel_count(analyseMe) {
 	var text = analyseMe,
 		upperCase = text.toUpperCase(),
@@ -34,6 +35,7 @@ function string_reverser(reverseMe) {
 	return tempArray.join('');
 };
 
+// Setup basic mathematic functions
 var Math = {
 	add: function(num1, num2) {
 		return num1 + num2;
@@ -48,3 +50,25 @@ var Math = {
 		return num1 / num2;
 	}
 }
+
+// Make the calculator!!
+var calculator = {
+	operator: [],
+	operand: [],
+	output: 0,
+
+	// Reset calculator (clear arrays etc)
+	reset: function() {
+		calculator.operator = [];
+		calculator.operand = [];
+		calculator.output = 0;
+	}
+}
+
+
+
+
+
+
+
+

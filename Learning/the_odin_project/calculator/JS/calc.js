@@ -35,6 +35,15 @@ function string_reverser(reverseMe) {
 	return tempArray.join('');
 };
 
+var $operand = $("button").find(".operand");
+	$operator = $("button").find(".operator");
+
+$operator.on('click', function(event) {
+	event.preventDefault();
+	/* Act on the event */
+	calculator.keyPush
+});
+
 // Setup basic mathematic functions
 var Math = {
 	add: function(num1, num2) {
@@ -62,8 +71,20 @@ var calculator = {
 		calculator.operator = [];
 		calculator.operand = [];
 		calculator.output = 0;
+	},
+	keyPush: function(key) {
+		if (key == $operator) {
+			calculator.operator.push(this);
+		}
+		else if (key == $operand) {
+			calculator.operand.push(this);
+		}
 	}
 }
+
+$(document).ready(function() {
+
+});
 
 
 

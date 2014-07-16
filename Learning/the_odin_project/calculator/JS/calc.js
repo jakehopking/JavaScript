@@ -35,14 +35,6 @@ function string_reverser(reverseMe) {
 	return tempArray.join('');
 };
 
-var $operand = $("button").find(".operand");
-	$operator = $("button").find(".operator");
-
-$operator.on('click', function(event) {
-	event.preventDefault();
-	/* Act on the event */
-	calculator.keyPush
-});
 
 // Setup basic mathematic functions
 var Math = {
@@ -64,26 +56,34 @@ var Math = {
 var calculator = {
 	operator: [],
 	operand: [],
-	output: 0,
+	calcDisplay: 0,
 
 	// Reset calculator (clear arrays etc)
 	reset: function() {
 		calculator.operator = [];
 		calculator.operand = [];
-		calculator.output = 0;
+		calculator.calcDisplay = 0;
 	},
-	keyPush: function(key) {
-		if (key == $operator) {
-			calculator.operator.push(this);
-		}
-		else if (key == $operand) {
-			calculator.operand.push(this);
-		}
+	equals: function() {
+
+	},
+	buttonNumber: function() {
+
+	},
+	buttonAction: function() {
+
 	}
 }
 
 $(document).ready(function() {
-
+	$(".operand").on("click", function() {
+		var $operand = $(this).text().trim();
+		$('#calcScreen').val($operand);
+	});
+	$(".operator").on("click", function() {
+		var $operator = $(this).text().trim();
+		$('#calcScreen').val($operator);
+	});
 });
 
 

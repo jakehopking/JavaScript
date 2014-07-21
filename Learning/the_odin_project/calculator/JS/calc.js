@@ -61,9 +61,13 @@ var calculator = {
 	// Reset calculator (clear arrays etc)
 	operandPush: function(thisOperand) {
 		calculator.operand.push(thisOperand);
+
 	},
 	operatorPush: function(thisOperator) {
 		calculator.operator.push(thisOperator);
+	},
+	joinNumbers: function() {
+
 	},
 	reset: function() {
 		calculator.operator = [];
@@ -71,7 +75,8 @@ var calculator = {
 		calculator.calcDisplay = 0;
 	},
 	equals: function() {
-
+		// calculator.operand[1] = result 
+		calculator.operator = [];
 	},
 	buttonNumber: function() {
 
@@ -82,6 +87,10 @@ var calculator = {
 }
 
 $(document).ready(function() {
+	// $(".operand").on("click", function() {
+	// 	var $operand = $(this).text().trim();
+	// 	$('#calcScreen').val(calculator.operandPush($operand));
+	// });
 	$(".operand").on("click", function() {
 		var $operand = $(this).text().trim();
 		$('#calcScreen').val(calculator.operandPush($operand));

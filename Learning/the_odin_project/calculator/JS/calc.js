@@ -59,30 +59,31 @@ var calculator = {
 	calcDisplay: 0,
 
 	// Reset calculator (clear arrays etc)
-	operandPush: function(thisOperand) {
-		calculator.operand.push(thisOperand);
-
-	},
-	operatorPush: function(thisOperator) {
-		calculator.operator.push(thisOperator);
-	},
-	joinNumbers: function() {
-
-	},
 	reset: function() {
 		calculator.operator = [];
 		calculator.operand = [];
 		calculator.calcDisplay = 0;
 	},
 	equals: function() {
-		// calculator.operand[1] = result 
+		// calculator.operand[0] = result;
 		calculator.operator = [];
 	},
-	buttonNumber: function() {
+	cheapEquals: function() {
+		var cheapResult = eval(calculator.operand.join(''));
+		return cheapResult;
+	},
+	clearAndStore: function() {
 
 	},
-	buttonAction: function() {
-
+	buttonNumber: function(number) {
+		calculator.operand.push(number);
+		calculator.calcDisplay = calculator.operand.join('');
+		return calculator.calcDisplay;
+	},
+	buttonAction: function(action) {
+		calculator.operator.push(action);
+		calculator.calcDisplay = calculator.operator.join('');
+		return calculator.calcDisplay;
 	}
 }
 
@@ -93,11 +94,19 @@ $(document).ready(function() {
 	// });
 	$(".operand").on("click", function() {
 		var $operand = $(this).text().trim();
-		$('#calcScreen').val(calculator.operandPush($operand));
+		$('#calcScreen').val(calculator.buttonNumber($operand));
 	});
 	$(".operator").on("click", function() {
 		var $operator = $(this).text().trim();
-		$('#calcScreen').val(calculator.operatorPush($operator));
+		// Utilising same array to perform cheap eval() method.
+		// Next stage to perform calculation without eval(join(''))
+		$('#calcScreen').val(calculator.buttonNumber($operator));
+	});
+	$(".reset").on("click", function() {
+		$('#calcScreen').val(calculator.reset());
+	});
+	$(".equals").on("click", function() {
+		$('#calcScreen').val(calculator.cheapEquals());
 	});
 });
 

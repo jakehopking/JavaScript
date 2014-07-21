@@ -50,10 +50,10 @@ button:focus {
 button:active {
 	background-color: #000 !important;
 }
-button.operator, button.equal {
+button.operator, button.equals {
 	background-color: #007ed6;
 }
-button.operator:hover, button.equal:hover {
+button.operator:hover, button.equals:hover {
 	background-color: #0068b1;
 }
 button.reset {

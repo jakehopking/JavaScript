@@ -59,6 +59,12 @@ var calculator = {
 	calcDisplay: 0,
 
 	// Reset calculator (clear arrays etc)
+	operandPush: function(thisOperand) {
+		calculator.operand.push(thisOperand);
+	},
+	operatorPush: function(thisOperator) {
+		calculator.operator.push(thisOperator);
+	},
 	reset: function() {
 		calculator.operator = [];
 		calculator.operand = [];
@@ -78,11 +84,11 @@ var calculator = {
 $(document).ready(function() {
 	$(".operand").on("click", function() {
 		var $operand = $(this).text().trim();
-		$('#calcScreen').val($operand);
+		$('#calcScreen').val(calculator.operandPush($operand));
 	});
 	$(".operator").on("click", function() {
 		var $operator = $(this).text().trim();
-		$('#calcScreen').val($operator);
+		$('#calcScreen').val(calculator.operatorPush($operator));
 	});
 });
 

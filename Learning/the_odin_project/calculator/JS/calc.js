@@ -58,7 +58,7 @@ var calculator = {
 	operatorStore: [],
 	operandPress: [],
 	operandStore: [],
-	calcDisplay: 0,
+	display: 0,
 
 	// Reset calculator (clear arrays etc)
 	reset: function() {
@@ -66,51 +66,77 @@ var calculator = {
 		calculator.operatorStore = [];
 		calculator.operandPress = [];
 		calculator.operandStore = [];
-		calculator.calcDisplay = 0;
+		calculator.display = 0;
 	},
 	equals: function() {
-		// calculator.operandPress[0] = result;
-		calculator.operatorPress = [];
+		calculator.storeNumber();
+		if (calculator.operandStore.length >= 2 && calculator.operatorStore.length >= 1) {
+			var num1 = calculator.operandStore[0],
+				num2 = calculator.operandStore[1],
+				numAction = calculator.operatorStore[0];
+			
+			if (numAction == "+") {
+				result = Math.add(num1, num2);
+				calculator.display = result;
+				calculator.storeResult(result);
+			} else if (numAction == "-") {
+				result = Math.subtract(num1, num2);
+				calculator.display = result;
+				calculator.storeResult(result);
+			} else if (numAction == "*") {
+				result = Math.multiply(num1, num2);
+				calculator.display = result;
+				calculator.storeResult(result);
+			} else if (numAction == "/") {
+				result = Math.divide(num1, num2);
+				calculator.display = result;
+				calculator.storeResult(result);
+			}
+			return calculator.display;
+		}
 	},
-	cheapEquals: function() {
-		var cheapResult = eval(calculator.operandPress.join(''));
-		return cheapResult;
+	storeNumber: function() {
+		var joinedNumber = parseInt(calculator.operandPress.join(''));
+		if (calculator.operandStore.length > 0) {
+			calculator.operandStore.push(joinedNumber);
+		} else {
+			calculator.operandStore[0] = joinedNumber;
+		}
 	},
-	clearAndStore: function() {
-
+	storeResult: function(result) {
+		calculator.operandStore = [];
+		calculator.operandStore[0] = result;
 	},
 	buttonNumber: function(number) {
 		calculator.operandPress.push(number);
-		calculator.calcDisplay = calculator.operandPress.join('');
-		return calculator.calcDisplay;
+		calculator.display = calculator.operandPress.join('');
+		return calculator.display;
 	},
 	buttonAction: function(action) {
+		calculator.operatorStore.push(action);
 		calculator.operatorPress.push(action);
-		calculator.calcDisplay = calculator.operatorPress.join('');
-		return calculator.calcDisplay;
+		calculator.storeNumber();
+		calculator.display = calculator.operatorPress.join('');
+		calculator.operatorPress = [];
+		calculator.operandPress = [];
+		return calculator.display;
 	}
 }
 
 $(document).ready(function() {
-	// $(".operand").on("click", function() {
-	// 	var $operand = $(this).text().trim();
-	// 	$('#calcScreen').val(calculator.operandPush($operand));
-	// });
 	$(".operand").on("click", function() {
 		var $operand = $(this).text().trim();
 		$('#calcScreen').val(calculator.buttonNumber($operand));
 	});
 	$(".operator").on("click", function() {
 		var $operator = $(this).text().trim();
-		// Utilising same array to perform cheap eval() method.
-		// Next stage to perform calculation without eval(join(''))
-		$('#calcScreen').val(calculator.buttonNumber($operator));
+		$('#calcScreen').val(calculator.buttonAction($operator));
 	});
 	$(".reset").on("click", function() {
 		$('#calcScreen').val(calculator.reset());
 	});
 	$(".equals").on("click", function() {
-		$('#calcScreen').val(calculator.cheapEquals());
+		$('#calcScreen').val(calculator.equals());
 	});
 });
 

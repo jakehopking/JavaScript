@@ -121,7 +121,6 @@ var calculator = {
 		}
 		calculator.display = calculator.operatorPress.join('');
 		calculator.storeNumber();
-		// calculator.operatorPress = [];
 		calculator.operandPress = [];
 		return calculator.display;
 	}

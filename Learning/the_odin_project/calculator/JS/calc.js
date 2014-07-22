@@ -54,35 +54,39 @@ var Math = {
 
 // Make the calculator!!
 var calculator = {
-	operator: [],
-	operand: [],
+	operatorPress: [],
+	operatorStore: [],
+	operandPress: [],
+	operandStore: [],
 	calcDisplay: 0,
 
 	// Reset calculator (clear arrays etc)
 	reset: function() {
-		calculator.operator = [];
-		calculator.operand = [];
+		calculator.operatorPress = [];
+		calculator.operatorStore = [];
+		calculator.operandPress = [];
+		calculator.operandStore = [];
 		calculator.calcDisplay = 0;
 	},
 	equals: function() {
-		// calculator.operand[0] = result;
-		calculator.operator = [];
+		// calculator.operandPress[0] = result;
+		calculator.operatorPress = [];
 	},
 	cheapEquals: function() {
-		var cheapResult = eval(calculator.operand.join(''));
+		var cheapResult = eval(calculator.operandPress.join(''));
 		return cheapResult;
 	},
 	clearAndStore: function() {
 
 	},
 	buttonNumber: function(number) {
-		calculator.operand.push(number);
-		calculator.calcDisplay = calculator.operand.join('');
+		calculator.operandPress.push(number);
+		calculator.calcDisplay = calculator.operandPress.join('');
 		return calculator.calcDisplay;
 	},
 	buttonAction: function(action) {
-		calculator.operator.push(action);
-		calculator.calcDisplay = calculator.operator.join('');
+		calculator.operatorPress.push(action);
+		calculator.calcDisplay = calculator.operatorPress.join('');
 		return calculator.calcDisplay;
 	}
 }

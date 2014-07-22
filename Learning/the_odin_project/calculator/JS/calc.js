@@ -70,9 +70,9 @@ var calculator = {
 	},
 	equals: function() {
 		calculator.storeNumber();
-		if (calculator.operandStore.length >= 2 && calculator.operatorStore.length >= 1) {
-			var num1 = calculator.operandStore[0],
-				num2 = calculator.operandStore[1],
+		if (calculator.operandStore.length == 2 && calculator.operatorStore.length == 1) {
+			var num1 = calculator.operandStore[1],
+				num2 = calculator.operandStore[0],
 				numAction = calculator.operatorStore[0];
 			
 			if (numAction == "+") {
@@ -92,19 +92,20 @@ var calculator = {
 				calculator.display = result;
 				calculator.storeResult(result);
 			}
+			calculator.operandStore[1] = undefined;
+			calculator.operandPress = [];
 			return calculator.display;
 		}
 	},
 	storeNumber: function() {
 		var joinedNumber = parseInt(calculator.operandPress.join(''));
-		if (calculator.operandStore.length > 0) {
-			calculator.operandStore.push(joinedNumber);
+		if (calculator.operandStore.length == 1) {
+			calculator.operandStore[1] = joinedNumber;
 		} else {
 			calculator.operandStore[0] = joinedNumber;
 		}
 	},
 	storeResult: function(result) {
-		calculator.operandStore = [];
 		calculator.operandStore[0] = result;
 	},
 	buttonNumber: function(number) {
@@ -113,11 +114,14 @@ var calculator = {
 		return calculator.display;
 	},
 	buttonAction: function(action) {
-		calculator.operatorStore.push(action);
-		calculator.operatorPress.push(action);
-		calculator.storeNumber();
+		calculator.operatorStore[0] = action;
+		calculator.operatorPress[0] = action;
+		if (calculator.operandStore.length == 2) {
+			calculator.operandStore[1] = calculator.display;
+		}
 		calculator.display = calculator.operatorPress.join('');
-		calculator.operatorPress = [];
+		calculator.storeNumber();
+		// calculator.operatorPress = [];
 		calculator.operandPress = [];
 		return calculator.display;
 	}

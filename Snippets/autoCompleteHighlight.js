@@ -1,3 +1,4 @@
+// Keyup and down cycles through a list, adding a class of highlight to the selected list item. It loops too.
 // Requires ul.autoComplete and some styling for the li.highlight. Simples.
 
 

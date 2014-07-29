@@ -1,12 +1,24 @@
 // Keyup and down cycles through a list, adding a class of highlight to the selected list item. It loops too.
 // Requires ul.autoComplete and some styling for the li.highlight. Simples.
+// 
+// Finds first list item with an anchor and adds a class to its parent
+// 
+// <ul class="autoComplete">
+//   <li>Something</li>
+//   <li><a href="#">Link</a></li>
+//   <li><a href="#">Link</a></li>
+//   <li><a href="#">Link</a></li>
+//   <li><a href="#">Link</a></li>
+//   <li><a href="#">Link</a></li>
+//   <li><a href="#">Link</a></li>
+//   <li><a href="#">Link</a></li>
+// </ul>
 
 
 var autoCompleteHighlight = function() {
     var $autoComplete = $('ul.autoComplete'),
-    $acFirstLi = $autoComplete.find('li').first();
-
-    $acFirstLi.addClass('highlight');
+    $acFirstLi = $autoComplete.find('li a').first();
+    $acFirstLi.parent().addClass('highlight');
 
     $(document).on('keyup', $autoComplete, function(e) {
         var $highlight = $autoComplete.find('.highlight'), $li = $('li');

@@ -36,3 +36,5 @@ var autoCompleteHighlight = function() {
     }) 
 };
 autoCompleteHighlight(); 
+
+// Need to add on enter event hander for highlighted item to follow link

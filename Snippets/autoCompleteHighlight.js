@@ -22,7 +22,7 @@ var autoCompleteHighlight = function() {
 
     $(document).on('keyup', $autoComplete, function(e) {
         var $highlight = $autoComplete.find('.highlight'), $li = $('li');
-        if (e.keyCode == 40) {
+        if (e.keyCode === 40) {
             $highlight.removeClass('highlight').next().addClass('highlight');
             if ($highlight.next().length == 0) {
                 $li.eq(0).addClass('highlight')
@@ -32,9 +32,9 @@ var autoCompleteHighlight = function() {
             if ($highlight.prev().length == 0) {
                 $li.eq(-1).addClass('highlight')
             }
+        } else if (e.keyCode === 13) {
+          $highlight.find('a')[0].click(); 
         }
     }) 
 };
 autoCompleteHighlight(); 
-
-// Need to add an enter event hander for highlighted item to follow link

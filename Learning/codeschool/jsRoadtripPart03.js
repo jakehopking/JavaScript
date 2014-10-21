@@ -63,3 +63,61 @@ modifiedNames.map (
 		alert("Yo, " + name + "!");
 	}
 );
+
+
+// Part 03; Level 01; Challenge 09
+var puzzlers = [
+  function(input) {
+  	return (input * 3) - 8;
+  },
+  function(input) {
+  	return Math.pow((input + 2), 3);
+  },
+  function(input) {
+  	return (input * input) - 9;
+  },
+  function(input) {
+  	return input % 4;
+  }
+];
+
+// Part 03; Level 01; Challenge 11
+function adventureSelector ( userChoice ){
+  if (userChoice === 1) {
+    return function() {
+    	alert("You've selected the Vines of Doom!\nHope you have a swingin' time.");
+    };
+  } else if (userChoice === 2) {
+    return function() {
+    	alert("Looks like you want the Lake of Despair!\nWatch out for crocs. And I ain't talkin' about shoes.");	
+    };
+  } else {
+    return function() {
+    	alert("The Caves of Catastrophe, really?\nAlright, well....nice knowing you.");
+    };
+  }
+}
+
+
+// Part 03; Level 01; Challenge 11
+adventureSelector(3)();
+
+// Part 03; Level 01; Challenge 13
+var puzzlers = [
+  function ( a ) { return 8*a - 10; },
+  function ( a ) { return (a-3) * (a-3) * (a-3); },
+  function ( a ) { return a * a + 4; },
+  function ( a ) { return a % 5; }
+];
+var start = 2;
+
+var applyAndEmpty = function (number, queue) {
+
+  var qLength = queue.lenght;
+  for (var i = 0; i < qLenth; i++) {
+  	number = queue.shift()(number);
+  }
+	return number;
+};
+
+alert(applyAndEmpty(start, puzzlers));
